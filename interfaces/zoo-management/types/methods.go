@@ -9,10 +9,8 @@ func (l *Lion) MakeSound() string {
 	return "roar"
 }
 func (l *Lion) Eat() string {
-	fmt.Println("------->",l.LastFeedTime)
-
 	if l.LastFeedTime != "" {
-		lastFeed, err := time.Parse(defaultDate, l.LastFeedTime)
+		lastFeed, err := time.Parse(time.DateTime, l.LastFeedTime)
 
 		if err != nil {
 			return fmt.Sprintf("Error: %v", err)
@@ -24,7 +22,7 @@ func (l *Lion) Eat() string {
 	}
 
 	l.FoodType = MEAT
-	l.LastFeedTime = time.Now().Format(defaultDate)
+	l.LastFeedTime = time.Now().Format(time.DateTime)
 
 	return fmt.Sprintf("%s just got fed @ %s", l.Name, l.LastFeedTime)
 }
